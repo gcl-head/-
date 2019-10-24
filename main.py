@@ -3,6 +3,7 @@ from copy import deepcopy
 
 
 def get_idioms():
+    # 读取成语库内容
     file = open('idiom.txt', 'r')
     idiom = file.readlines()
     for (index, i) in enumerate(idiom):
