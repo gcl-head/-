@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from pypinyin import lazy_pinyin
 from copy import deepcopy
 
