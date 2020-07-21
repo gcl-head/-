@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
 from pypinyin import lazy_pinyin
 from copy import deepcopy
+import sys
+sys.setrecursionlimit(1000000)
 
 
 def get_idioms():
@@ -13,14 +14,15 @@ def get_idioms():
 
 
 def find_next_idioms(idiom):
-    tail = lazy_pinyin(idiom[-1])[0]
-    if tail == target_head:
+    tail = idiom[-1]
+    # if tail == target_head:
+    if tail == target[0]:
         return {target}
     re = set()
     if tail in tails:
         return re
     for i in idioms:
-        if lazy_pinyin(i[0])[0] == tail:
+        if i[0] == tail:
             re.add(i)
     tails.add(tail)
     return re
@@ -50,7 +52,7 @@ def get_route(idiom, route):
 idioms = get_idioms()  # 成语库
 tails = set()  # 成语尾部拼音
 routes = []  # 成语接龙路径
-target = '一个顶俩'  # 目标成语
+target = '无所事事'  # 目标成语
 target_head = lazy_pinyin(target[0])[0]
 
 if __name__ == '__main__':
